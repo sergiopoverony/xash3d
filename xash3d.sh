@@ -41,7 +41,7 @@ function build_xash3d() {
 function install_bin_xash3d() {
     mkdir -p /home/pi/RetroPie/roms/ports/Half-Life
     cd /home/pi/RetroPie/roms/ports/Half-Life
-    wget --no-check-certificate "https://github.com/HelloOO7/storage/raw/master/xash3d.tar" -O xash3d.tar
+    wget --no-check-certificate "https://github.com/sergiopoverony/xash3d_pi/raw/master/xash3d.tar" -O xash3d.tar
     tar -xvf xash3d.tar
     rm -r xash3d.tar
 }
@@ -49,12 +49,9 @@ function install_bin_xash3d() {
 function install_xash3d() {
     cd "$md_build"
     mkdir -p /home/pi/RetroPie/roms/ports/Half-Life
-    cp -Rvf hlsdk/build/cl_dll/client.so /home/pi/RetroPie/roms/ports/Half-Life/valve/cl_dll
-    cp -Rvf hlsdk/build/dlls/hl.so /home/pi/RetroPie/roms/ports/Half-Life/valve/dlls
-    cp -Rvf build/engine/libxash.so /home/pi/RetroPie/roms/ports/Half-Life
-    cp -Rvf build/game_launch/xash3d /home/pi/RetroPie/roms/ports/Half-Life 
-    cp -Rvf build/mainui/libxashmenu.so /home/pi/RetroPie/roms/ports/Half-Life 
-
+    cp -Rvf hlsdk/build/dlls/hl.so /home/pi/RetroPie/roms/ports/Half-Life/valve/dlls/hl.so
+    mv -Rvf hlsdk/build/cl_dll/client.so /home/pi/RetroPie/roms/ports/Half-Life/valve/cl_dlls/client.so 
+    cp -Rvf build/engine/libxash.so build/game_launch/xash3d build/mainui/libxashmenu.so /home/pi/RetroPie/roms/ports/Half-Life
 }
 
 function configure_xash3d() {
