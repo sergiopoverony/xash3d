@@ -49,13 +49,18 @@ function install_bin_xash3d() {
 function install_xash3d() {
     cd "$md_build"
     mkdir -p /home/pi/RetroPie/roms/ports/Half-Life
-    cp -Rvf hlsdk/build/cl_dll/client.so hlsdk/build/dlls/hl.so build/engine/libxash.so build/game_launch/xash3d build/mainui/libxashmenu.so /home/pi/Half-Life
+    cp -Rvf hlsdk/build/cl_dll/client.so /home/pi/RetroPie/roms/ports/Half-Life/valve/cl_dll
+    cp -Rvf hlsdk/build/dlls/hl.so /home/pi/RetroPie/roms/ports/Half-Life/valve/dlls
+    cp -Rvf build/engine/libxash.so /home/pi/RetroPie/roms/ports/Half-Life
+    cp -Rvf build/game_launch/xash3d /home/pi/RetroPie/roms/ports/Half-Life 
+    cp -Rvf build/mainui/libxashmenu.so /home/pi/RetroPie/roms/ports/Half-Life 
+
 }
 
 function configure_xash3d() {
     addPort "$md_id" "Xash3D" "Xash3D" "$md_inst/Xash3D.sh"
     cat > "$md_inst/Xash3D.sh" << _EOF_
-LD_LIBRARY_PATH=/home/pi/RetroPie/roms/ports/Half-Life /home/pi/RetroPie/roms/ports/Half-Life/xash3d -console -sdl_joy_old_api -clientlib cl_dlls/client.so -dll dlls/server.so
+LD_LIBRARY_PATH=/home/pi/RetroPie/roms/ports/Half-Life /home/pi/RetroPie/roms/ports/Half-Life/xash3d -console -sdl_joy_old_api -clientlib cl_dlls/client.so -dll dlls/hl.so
 _EOF_
     chmod +x "$md_inst/Xash3D.sh"
 }
