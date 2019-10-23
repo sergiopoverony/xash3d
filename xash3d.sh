@@ -55,7 +55,7 @@ function install_xash3d() {
 function configure_xash3d() {
     addPort "$md_id" "Xash3D" "Xash3D" "$md_inst/Xash3D.sh"
     cat > "$md_inst/Xash3D.sh" << _EOF_
-LD_LIBRARY_PATH=/home/pi/RetroPie/roms/ports/Half-Life /home/pi/RetroPie/roms/ports/Half-Life/xash3d -console
+LD_LIBRARY_PATH=/home/pi/RetroPie/roms/ports/Half-Life /home/pi/RetroPie/roms/ports/Half-Life/xash3d -console -sdl_joy_old_api -clientlib cl_dlls/client.so -dll dlls/server.so
 _EOF_
     chmod +x "$md_inst/Xash3D.sh"
 }
