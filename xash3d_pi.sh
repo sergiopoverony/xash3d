@@ -14,19 +14,19 @@ rp_module_desc="xash3d engine for play Half-Life and Half-Life modes on Raspberr
 rp_module_section="exp"
 rp_module_flags=""
 
-function depends_hl() {
+function depends_xash3d() {
     local depends=(cmake libx11-dev libxext-dev libfontconfig1-dev libfontconfig1 libsdl2-dev libsdl2-2.0-0 libsdl2-mixer-dev libsdl2-mixer-2.0-0 libsdl2-net-dev libsdl2-net-2.0-0 libsdl2-ttf-2.0-0 libsdl2-ttf-dev libsdl2-image-dev libsdl2-image-2.0-0)
     isPlatform "rpi" && depends+=(libraspberrypi-dev)
     getDepends "${depends[@]}"
 }
 
-function sources_hl() {
+function sources_xash3d() {
     gitPullOrClone "$md_build" git://github.com/FWGS/xash3d
     gitPullOrClone "$md_build"/engine/nanogl git://github.com/FWGS/nanogl
     gitPullOrClone "$md_build"/hlsdk git://github.com/FWGS/hlsdk-xash3d
 }
 
-function build_hl() {
+function build_xash3d() {
     cd "$md_build"
     mkdir build && cd build
     sudo cmake -DXASH_NANOGL=yes -DXASH_VGUI=no -DXASH_GLES=yes ..
@@ -38,21 +38,21 @@ function build_hl() {
     sudo make -j2
 }
 
-function install_bin_hl() {
-    mkdir -p /home/pi/Half-Life
-    cd /home/pi/Half-Life
+function install_bin_xash3d() {
+    mkdir -p /home/pi/RetroPie/roms/ports/Half-Life
+    cd /home/pi/RetroPie/roms/ports/Half-Life
     wget --no-check-certificate "https://github.com/HelloOO7/storage/raw/master/xash3d.tar" -O xash3d.tar
     tar -xvf xash3d.tar
     rm -r xash3d.tar
 }
 
-function install_hl() {
+function install_xash3d() {
     cd "$md_build"
     mkdir -p /home/pi/RetroPie/roms/ports/Half-Life
     cp -Rvf hlsdk/build/cl_dll/client.so hlsdk/build/dlls/hl.so build/engine/libxash.so build/game_launch/xash3d build/mainui/libxashmenu.so /home/pi/Half-Life
 }
 
-function configure_hl() {
+function configure_xash3d() {
     addPort "$md_id" "Xash3D" "Xash3D" "$md_inst/Xash3D.sh"
     cat > "$md_inst/Xash3D.sh" << _EOF_
 LD_LIBRARY_PATH=/home/pi/RetroPie/roms/ports/Half-Life /home/pi/RetroPie/roms/ports/Half-Life/xash3d -console
@@ -60,6 +60,6 @@ _EOF_
     chmod +x "$md_inst/Xash3D.sh"
 }
 
-function remove_hl() {
-    rm /home/pi/RetroPie/roms/ports/Half-Life/*xash* /home/pi/RetroPie/roms/ports/Half-Life/client.* /home/pi/RetroPie/roms/ports/Half-Life/hl.*
+function remove_xash3d() {
+    rm /home/pi/RetroPie/roms/ports/Half-Life/*xash* /home/pi/RetroPie/roms/ports/Half-Life/client.* /home/pi/RetroPie/roms/ports/Half-Life/xash3d.*
 }
