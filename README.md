@@ -9,7 +9,7 @@ Copy Half-Life folder from Steamapps:
 
 for example you can see ../rom/ports/Half-Life/ and more files from game
 
-Next: In concole move to Retropie-Setup folder
+Next: In console go to Retropie-Setup folder
 
 cd RetroPie-Setup
 
