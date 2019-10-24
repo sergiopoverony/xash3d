@@ -19,7 +19,7 @@ cd ports
 
 wget --no-check-certificate https://github.com/sergiopoverony/xash3d/raw/master/xash3d.sh
 
-After it you can run Retropie Setup -> Manage packages -> exp (experemental) -> xash3d
+After it in Emulationstation settings RetroPie - you can run Retropie Setup -> Manage packages -> exp (experemental) -> xash3d
 
 install with bin or sources.
 
