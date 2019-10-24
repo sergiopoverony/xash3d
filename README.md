@@ -5,9 +5,9 @@ Xash3D Engine is a custom Gold Source engine rewritten from scratch. Xash3D is c
 
 Copy Half-Life folder from Steamapps:
 
-/steam/steamapps/common/Half-Life in /rom/ports folder
+../steam/steamapps/common/Half-Life in ../rom/ports folder
 
-for example you can see /rom/ports/Half-Life/valve and more files from game
+for example you can see ../rom/ports/Half-Life/ and more files from game
 
 Move to Retropie-Setup folder
 
